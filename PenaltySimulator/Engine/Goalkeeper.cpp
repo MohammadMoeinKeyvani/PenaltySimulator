@@ -12,7 +12,7 @@ Goalkeeper::Goalkeeper(Vec2 inputPos, float inputHalfWidt, float inputHalfHeight
 
 bool Goalkeeper::DoBallCollision(Ball& ball) const
 {
-	if (ball.GetVelocity().y > 0 && GetRectangle().IsCollidingWith(ball.GetRectangle()))
+	if (GetRectangle().IsCollidingWith(ball.GetRectangle()))
 	{
 		return true;
 	}

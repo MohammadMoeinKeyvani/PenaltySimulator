@@ -21,37 +21,37 @@
 #include "MainWindow.h"
 #include "Game.h"
 
-const Color netColor(255, 255, 204);
 
 Game::Game(MainWindow& wnd)
 	:
 	wnd(wnd),
 	gfx(wnd),
 	randomNum(rd()),
-	vxDist(-300.0f, 300.0f),
-	vyDist(400.0f, 500.0f),
+	ballVxDist(-300.0f, 300.0f),
+	ballVyDist(400.0f, 500.0f),
 	gkSpeedDist(200.0f, 350.0f),
 	gkRandomDirection(0, 1),
-	ball(Vec2(400.0f, 200.0f), Vec2(vxDist(randomNum), vyDist(randomNum))),
-	wall(10.0f, 10.0f, float(gfx.ScreenWidth - 10), float(gfx.ScreenHeight - 10)),
-	goalkeeper(Vec2(400.0f, 500.0f), 60.0f, 12.0f, gkSpeedDist(randomNum), gkRandomDirection(randomNum))
+	ball(Vec2(400.0f, 200.0f), Vec2(ballVxDist(randomNum), ballVyDist(randomNum))),
+	wall(10.0f, 10.0f, float(gfx.ScreenWidth - 10), float(gfx.ScreenHeight - 15)),
+	goalkeeper(Vec2(400.0f, 500.0f), 60.0f, 12.0f, gkSpeedDist(randomNum), gkRandomDirection(randomNum)),
+	netColor(255, 255, 204)
 {
-	int left = (gfx.ScreenWidth - (numberOfBrickColumns * brickWidth)) / 2;
+	int left = (gfx.ScreenWidth - (numberOfNetColumns * netWidth)) / 2;
 	Vec2 topLeft(float(left), 540.0f);
 
 
 	int i = 0;
 
-	for (int y = 0; y < numberOfBrickRows; y++)
+	for (int y = 0; y < numberOfNetRows; y++)
 	{
 
-		for (int x = 0; x < numberOfBrickColumns; x++)
+		for (int x = 0; x < numberOfNetColumns; x++)
 		{
 			net[i] = Rect
 				(
-				topLeft + Vec2(float(x * brickWidth), float(y * brickHeight)),
-				brickWidth,
-				brickHeight
+				topLeft + Vec2(float(x * netWidth), float(y * netHeight)),
+				netWidth,
+				netHeight
 				);
 			i++;
 		}
