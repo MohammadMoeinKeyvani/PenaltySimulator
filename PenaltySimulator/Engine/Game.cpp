@@ -21,6 +21,8 @@
 #include "MainWindow.h"
 #include "Game.h"
 
+const Color netColor(255, 255, 204);
+
 Game::Game(MainWindow& wnd)
 	:
 	wnd(wnd),
@@ -42,15 +44,15 @@ Game::Game(MainWindow& wnd)
 
 	for (int y = 0; y < numberOfBrickRows; y++)
 	{
-		const Color c(255, 255, 204);
 
 		for (int x = 0; x < numberOfBrickColumns; x++)
 		{
-			bricks[i] = Brick(
-				Rect(topLeft + Vec2(float(x * brickWidth), float(y * brickHeight)),
-					brickWidth,
-					brickHeight),
-				c);
+			net[i] = Rect
+				(
+				topLeft + Vec2(float(x * brickWidth), float(y * brickHeight)),
+				brickWidth,
+				brickHeight
+				);
 			i++;
 		}
 	}
@@ -92,10 +94,11 @@ void Game::ComposeFrame()
 
 	gfx.DrawCircle(400, 200, 15, Colors::White);
 
-	for (Brick& b : bricks)
+	for (Rect& n : net)
 	{
-		b.Draw(gfx);
+		gfx.DrawRect(n.GetExpanded(-1), netColor);
 	}
+
 	gfx.DrawRect(0, 520, 800, 540, Colors::White);
 	ball.Draw(gfx);
 	goalkeeper.Draw(gfx);

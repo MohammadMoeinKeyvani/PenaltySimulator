@@ -64,5 +64,6 @@ private:
 	static constexpr int numberOfBrickRows = 3;
 	static constexpr int numberOfBricks = numberOfBrickColumns * numberOfBrickRows;
 	Brick bricks[numberOfBricks];
+	Rect net[numberOfBricks];
 	/********************************/
 };
