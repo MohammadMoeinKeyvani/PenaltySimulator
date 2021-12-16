@@ -26,7 +26,6 @@
 #include "FrameTimer.h"
 #include "Ball.h"
 #include "Goalkeeper.h"
-#include "Brick.h"
 #include <random>
 
 class Game
