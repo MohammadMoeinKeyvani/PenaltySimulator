@@ -82,6 +82,16 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
+	for (int i = 0; i < gfx.ScreenWidth; i++)
+	{
+		for (int j = 0; j < gfx.ScreenHeight; j++)
+		{
+			gfx.PutPixel(i, j, 2, 105, 24);
+		}
+	}
+
+	gfx.DrawCircle(400, 200, 15, Colors::White);
+
 	for (Brick& b : bricks)
 	{
 		b.Draw(gfx);
